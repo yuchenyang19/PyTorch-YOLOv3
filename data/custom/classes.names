@@ -1,1 +1,15 @@
-train
+Button
+CheckBox
+Chronometer
+EditText
+ImageButton
+ImageView
+ProgressBar
+RadioButton
+RatingBar
+SeekBar
+Spinner
+Switch
+ToggleButton
+VideoView
+TextView
