@@ -110,6 +110,12 @@ if __name__ == "__main__":
             unique_labels = detections[:, -1].cpu().unique()
             n_cls_preds = len(unique_labels)
             bbox_colors = random.sample(colors, n_cls_preds)
+
+            # 输出txt格式的结果
+            tempFilename = path.split("/")[-1].split(".")[0]
+            file = open("./txtOutput/" + tempFilename + ".txt", "w")
+            # 到这里
+
             for x1, y1, x2, y2, conf, cls_conf, cls_pred in detections:
 
                 print("\t+ Label: %s, Conf: %.5f" % (classes[int(cls_pred)], cls_conf.item()))
@@ -131,6 +137,11 @@ if __name__ == "__main__":
                     verticalalignment="top",
                     bbox={"color": color, "pad": 0},
                 )
+
+                # 继续输出
+                file.write(classes[int(cls_pred)] + " " + x1 + " " + y1 + " " + x2 + " " + y2 + "\n")
+            file.close()
+            # 到这里结束
 
         # Save generated image with detections
         plt.axis("off")
